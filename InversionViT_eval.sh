@@ -1,0 +1,12 @@
+python vit_test.py \
+  --model InversionViT \
+  --resume ./vit_output/best_model.pth \
+  --dataset flatvel-a \
+  --val-anno ./split_files/flatvel_a_test_vit.txt \
+  --anno-path split_files \
+  --output-path vit_test_output \
+  --batch-size 16 \
+  --device cuda \
+  --k 1 \
+  --vis --vis-suffix vit_test \
+  -vb 2 -vsa 2

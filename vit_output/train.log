@@ -1,0 +1,205 @@
+2025-04-09 21:53:14 | INFO | Starting DDP training with InversionViT
+2025-04-09 22:03:09 | INFO | Starting DDP training with InversionViT
+2025-04-09 22:14:16 | INFO | Starting DDP training with InversionViT
+2025-04-09 22:18:12 | INFO | Epoch 0 Batch 0: Loss = 0.5613
+2025-04-09 22:21:01 | INFO | Epoch 0 Batch 20: Loss = 0.4967
+2025-04-09 22:23:32 | INFO | Epoch 0 Batch 40: Loss = 0.4056
+2025-04-09 22:26:07 | INFO | Epoch 0 Batch 60: Loss = 0.5418
+2025-04-09 22:28:40 | INFO | Epoch 0 Batch 80: Loss = 0.5062
+2025-04-09 22:32:42 | INFO | Validation Loss: 0.4824
+2025-04-09 22:32:42 | INFO | Model saved at epoch 0 with val loss 0.4824
+2025-04-09 22:33:29 | INFO | Epoch 1 Batch 0: Loss = 0.4296
+2025-04-09 22:36:15 | INFO | Epoch 1 Batch 20: Loss = 0.4627
+2025-04-09 22:39:05 | INFO | Epoch 1 Batch 40: Loss = 0.5147
+2025-04-09 22:41:27 | INFO | Epoch 1 Batch 60: Loss = 0.4504
+2025-04-09 22:44:10 | INFO | Epoch 1 Batch 80: Loss = 0.4841
+2025-04-09 22:48:06 | INFO | Validation Loss: 0.4589
+2025-04-09 22:48:06 | INFO | Model saved at epoch 1 with val loss 0.4589
+2025-04-09 22:48:37 | INFO | Epoch 2 Batch 0: Loss = 0.5081
+2025-04-09 22:51:23 | INFO | Epoch 2 Batch 20: Loss = 0.5238
+2025-04-09 22:53:55 | INFO | Epoch 2 Batch 40: Loss = 0.4058
+2025-04-09 22:56:42 | INFO | Epoch 2 Batch 60: Loss = 0.4905
+2025-04-09 22:59:20 | INFO | Epoch 2 Batch 80: Loss = 0.4269
+2025-04-09 23:03:13 | INFO | Validation Loss: 0.4300
+2025-04-09 23:03:13 | INFO | Model saved at epoch 2 with val loss 0.4300
+2025-04-09 23:03:49 | INFO | Epoch 3 Batch 0: Loss = 0.4722
+2025-04-09 23:06:39 | INFO | Epoch 3 Batch 20: Loss = 0.4037
+2025-04-09 23:09:31 | INFO | Epoch 3 Batch 40: Loss = 0.4386
+2025-04-09 23:12:21 | INFO | Epoch 3 Batch 60: Loss = 0.4147
+2025-04-09 23:15:04 | INFO | Epoch 3 Batch 80: Loss = 0.3657
+2025-04-09 23:18:43 | INFO | Validation Loss: 0.3868
+2025-04-09 23:18:43 | INFO | Model saved at epoch 3 with val loss 0.3868
+2025-04-09 23:19:32 | INFO | Epoch 4 Batch 0: Loss = 0.4240
+2025-04-09 23:22:19 | INFO | Epoch 4 Batch 20: Loss = 0.3490
+2025-04-09 23:24:56 | INFO | Epoch 4 Batch 40: Loss = 0.3534
+2025-04-09 23:27:18 | INFO | Epoch 4 Batch 60: Loss = 0.3381
+2025-04-09 23:29:54 | INFO | Epoch 4 Batch 80: Loss = 0.3394
+2025-04-09 23:33:51 | INFO | Validation Loss: 0.3347
+2025-04-09 23:33:51 | INFO | Model saved at epoch 4 with val loss 0.3347
+2025-04-09 23:34:29 | INFO | Epoch 5 Batch 0: Loss = 0.3577
+2025-04-09 23:37:17 | INFO | Epoch 5 Batch 20: Loss = 0.3583
+2025-04-09 23:40:03 | INFO | Epoch 5 Batch 40: Loss = 0.3192
+2025-04-09 23:42:49 | INFO | Epoch 5 Batch 60: Loss = 0.3083
+2025-04-09 23:45:19 | INFO | Epoch 5 Batch 80: Loss = 0.3888
+2025-04-09 23:49:15 | INFO | Validation Loss: 0.3372
+2025-04-09 23:49:56 | INFO | Epoch 6 Batch 0: Loss = 0.3084
+2025-04-09 23:52:40 | INFO | Epoch 6 Batch 20: Loss = 0.3175
+2025-04-09 23:55:25 | INFO | Epoch 6 Batch 40: Loss = 0.3176
+2025-04-09 23:58:05 | INFO | Epoch 6 Batch 60: Loss = 0.3121
+2025-04-10 00:00:44 | INFO | Epoch 6 Batch 80: Loss = 0.3355
+2025-04-10 00:04:28 | INFO | Validation Loss: 0.2994
+2025-04-10 00:04:28 | INFO | Model saved at epoch 6 with val loss 0.2994
+2025-04-10 00:05:07 | INFO | Epoch 7 Batch 0: Loss = 0.3339
+2025-04-10 00:07:53 | INFO | Epoch 7 Batch 20: Loss = 0.2668
+2025-04-10 00:10:37 | INFO | Epoch 7 Batch 40: Loss = 0.3101
+2025-04-10 00:13:10 | INFO | Epoch 7 Batch 60: Loss = 0.2697
+2025-04-10 00:15:47 | INFO | Epoch 7 Batch 80: Loss = 0.2772
+2025-04-10 00:19:33 | INFO | Validation Loss: 0.2866
+2025-04-10 00:19:33 | INFO | Model saved at epoch 7 with val loss 0.2866
+2025-04-10 00:20:16 | INFO | Epoch 8 Batch 0: Loss = 0.2446
+2025-04-10 00:23:05 | INFO | Epoch 8 Batch 20: Loss = 0.2809
+2025-04-10 00:25:50 | INFO | Epoch 8 Batch 40: Loss = 0.2762
+2025-04-10 00:28:29 | INFO | Epoch 8 Batch 60: Loss = 0.2858
+2025-04-10 00:30:58 | INFO | Epoch 8 Batch 80: Loss = 0.2482
+2025-04-10 00:34:40 | INFO | Validation Loss: 0.2583
+2025-04-10 00:34:40 | INFO | Model saved at epoch 8 with val loss 0.2583
+2025-04-10 00:35:27 | INFO | Epoch 9 Batch 0: Loss = 0.2596
+2025-04-10 00:38:19 | INFO | Epoch 9 Batch 20: Loss = 0.2744
+2025-04-10 00:40:51 | INFO | Epoch 9 Batch 40: Loss = 0.2717
+2025-04-10 00:43:32 | INFO | Epoch 9 Batch 60: Loss = 0.2728
+2025-04-10 00:46:11 | INFO | Epoch 9 Batch 80: Loss = 0.2530
+2025-04-10 00:49:44 | INFO | Validation Loss: 0.2650
+2025-04-10 00:50:37 | INFO | Epoch 10 Batch 0: Loss = 0.2476
+2025-04-10 00:53:27 | INFO | Epoch 10 Batch 20: Loss = 0.2690
+2025-04-10 00:56:06 | INFO | Epoch 10 Batch 40: Loss = 0.2288
+2025-04-10 00:58:45 | INFO | Epoch 10 Batch 60: Loss = 0.2400
+2025-04-10 01:01:31 | INFO | Epoch 10 Batch 80: Loss = 0.2430
+2025-04-10 01:05:07 | INFO | Validation Loss: 0.2444
+2025-04-10 01:05:07 | INFO | Model saved at epoch 10 with val loss 0.2444
+2025-04-10 01:05:51 | INFO | Epoch 11 Batch 0: Loss = 0.2784
+2025-04-10 01:08:37 | INFO | Epoch 11 Batch 20: Loss = 0.2282
+2025-04-10 01:11:12 | INFO | Epoch 11 Batch 40: Loss = 0.2484
+2025-04-10 01:13:50 | INFO | Epoch 11 Batch 60: Loss = 0.2210
+2025-04-10 01:16:29 | INFO | Epoch 11 Batch 80: Loss = 0.2216
+2025-04-10 01:20:04 | INFO | Validation Loss: 0.2427
+2025-04-10 01:20:04 | INFO | Model saved at epoch 11 with val loss 0.2427
+2025-04-10 01:20:50 | INFO | Epoch 12 Batch 0: Loss = 0.2773
+2025-04-10 01:23:25 | INFO | Epoch 12 Batch 20: Loss = 0.2650
+2025-04-10 01:26:01 | INFO | Epoch 12 Batch 40: Loss = 0.2075
+2025-04-10 01:28:52 | INFO | Epoch 12 Batch 60: Loss = 0.2428
+2025-04-10 01:31:31 | INFO | Epoch 12 Batch 80: Loss = 0.2239
+2025-04-10 01:35:04 | INFO | Validation Loss: 0.2427
+2025-04-10 01:35:53 | INFO | Epoch 13 Batch 0: Loss = 0.2287
+2025-04-10 01:38:32 | INFO | Epoch 13 Batch 20: Loss = 0.2636
+2025-04-10 01:41:17 | INFO | Epoch 13 Batch 40: Loss = 0.2239
+2025-04-10 01:43:56 | INFO | Epoch 13 Batch 60: Loss = 0.2560
+2025-04-10 01:46:38 | INFO | Epoch 13 Batch 80: Loss = 0.2278
+2025-04-10 01:50:18 | INFO | Validation Loss: 0.2274
+2025-04-10 01:50:19 | INFO | Model saved at epoch 13 with val loss 0.2274
+2025-04-10 01:51:06 | INFO | Epoch 14 Batch 0: Loss = 0.2423
+2025-04-10 01:53:52 | INFO | Epoch 14 Batch 20: Loss = 0.2033
+2025-04-10 01:56:35 | INFO | Epoch 14 Batch 40: Loss = 0.2948
+2025-04-10 01:59:13 | INFO | Epoch 14 Batch 60: Loss = 0.2204
+2025-04-10 02:01:25 | INFO | Epoch 14 Batch 80: Loss = 0.2458
+2025-04-10 02:05:45 | INFO | Validation Loss: 0.2349
+2025-04-10 02:06:15 | INFO | Epoch 15 Batch 0: Loss = 0.2246
+2025-04-10 02:09:08 | INFO | Epoch 15 Batch 20: Loss = 0.2014
+2025-04-10 02:11:48 | INFO | Epoch 15 Batch 40: Loss = 0.2216
+2025-04-10 02:14:16 | INFO | Epoch 15 Batch 60: Loss = 0.1929
+2025-04-10 02:16:43 | INFO | Epoch 15 Batch 80: Loss = 0.2047
+2025-04-10 02:20:39 | INFO | Validation Loss: 0.2242
+2025-04-10 02:20:40 | INFO | Model saved at epoch 15 with val loss 0.2242
+2025-04-10 02:21:24 | INFO | Epoch 16 Batch 0: Loss = 0.3013
+2025-04-10 02:24:08 | INFO | Epoch 16 Batch 20: Loss = 0.2182
+2025-04-10 02:26:40 | INFO | Epoch 16 Batch 40: Loss = 0.2087
+2025-04-10 02:29:05 | INFO | Epoch 16 Batch 60: Loss = 0.2093
+2025-04-10 02:31:47 | INFO | Epoch 16 Batch 80: Loss = 0.2115
+2025-04-10 02:36:05 | INFO | Validation Loss: 0.2192
+2025-04-10 02:36:06 | INFO | Model saved at epoch 16 with val loss 0.2192
+2025-04-10 02:36:37 | INFO | Epoch 17 Batch 0: Loss = 0.2533
+2025-04-10 02:39:15 | INFO | Epoch 17 Batch 20: Loss = 0.2369
+2025-04-10 02:41:44 | INFO | Epoch 17 Batch 40: Loss = 0.1955
+2025-04-10 02:44:18 | INFO | Epoch 17 Batch 60: Loss = 0.2326
+2025-04-10 02:47:03 | INFO | Epoch 17 Batch 80: Loss = 0.1938
+2025-04-10 02:50:53 | INFO | Validation Loss: 0.2207
+2025-04-10 02:51:45 | INFO | Epoch 18 Batch 0: Loss = 0.2072
+2025-04-10 02:54:28 | INFO | Epoch 18 Batch 20: Loss = 0.2177
+2025-04-10 02:57:00 | INFO | Epoch 18 Batch 40: Loss = 0.2703
+2025-04-10 02:59:33 | INFO | Epoch 18 Batch 60: Loss = 0.2333
+2025-04-10 03:02:13 | INFO | Epoch 18 Batch 80: Loss = 0.2042
+2025-04-10 03:05:55 | INFO | Validation Loss: 0.2171
+2025-04-10 03:05:55 | INFO | Model saved at epoch 18 with val loss 0.2171
+2025-04-10 03:06:30 | INFO | Epoch 19 Batch 0: Loss = 0.2097
+2025-04-10 03:09:04 | INFO | Epoch 19 Batch 20: Loss = 0.2566
+2025-04-10 03:11:42 | INFO | Epoch 19 Batch 40: Loss = 0.2270
+2025-04-10 03:14:23 | INFO | Epoch 19 Batch 60: Loss = 0.2208
+2025-04-10 03:16:58 | INFO | Epoch 19 Batch 80: Loss = 0.2409
+2025-04-10 03:20:57 | INFO | Validation Loss: 0.2157
+2025-04-10 03:20:57 | INFO | Model saved at epoch 19 with val loss 0.2157
+2025-04-10 03:21:22 | INFO | Epoch 20 Batch 0: Loss = 0.2107
+2025-04-10 03:24:05 | INFO | Epoch 20 Batch 20: Loss = 0.2441
+2025-04-10 03:26:48 | INFO | Epoch 20 Batch 40: Loss = 0.2297
+2025-04-10 03:29:28 | INFO | Epoch 20 Batch 60: Loss = 0.2120
+2025-04-10 03:32:05 | INFO | Epoch 20 Batch 80: Loss = 0.2134
+2025-04-10 03:36:00 | INFO | Validation Loss: 0.2102
+2025-04-10 03:36:00 | INFO | Model saved at epoch 20 with val loss 0.2102
+2025-04-10 03:36:37 | INFO | Epoch 21 Batch 0: Loss = 0.2337
+2025-04-10 03:39:21 | INFO | Epoch 21 Batch 20: Loss = 0.2389
+2025-04-10 03:41:53 | INFO | Epoch 21 Batch 40: Loss = 0.1916
+2025-04-10 03:44:20 | INFO | Epoch 21 Batch 60: Loss = 0.2072
+2025-04-10 03:46:58 | INFO | Epoch 21 Batch 80: Loss = 0.2315
+2025-04-10 03:50:53 | INFO | Validation Loss: 0.2064
+2025-04-10 03:50:53 | INFO | Model saved at epoch 21 with val loss 0.2064
+2025-04-10 03:51:23 | INFO | Epoch 22 Batch 0: Loss = 0.1812
+2025-04-10 03:54:19 | INFO | Epoch 22 Batch 20: Loss = 0.2022
+2025-04-10 03:57:05 | INFO | Epoch 22 Batch 40: Loss = 0.1909
+2025-04-10 03:59:45 | INFO | Epoch 22 Batch 60: Loss = 0.2294
+2025-04-10 04:02:18 | INFO | Epoch 22 Batch 80: Loss = 0.2028
+2025-04-10 04:06:01 | INFO | Validation Loss: 0.2031
+2025-04-10 04:06:01 | INFO | Model saved at epoch 22 with val loss 0.2031
+2025-04-10 04:06:39 | INFO | Epoch 23 Batch 0: Loss = 0.2028
+2025-04-10 04:09:22 | INFO | Epoch 23 Batch 20: Loss = 0.1794
+2025-04-10 04:11:45 | INFO | Epoch 23 Batch 40: Loss = 0.1738
+2025-04-10 04:14:29 | INFO | Epoch 23 Batch 60: Loss = 0.1733
+2025-04-10 04:16:58 | INFO | Epoch 23 Batch 80: Loss = 0.1994
+2025-04-10 04:21:04 | INFO | Validation Loss: 0.2020
+2025-04-10 04:21:04 | INFO | Model saved at epoch 23 with val loss 0.2020
+2025-04-10 04:21:45 | INFO | Epoch 24 Batch 0: Loss = 0.1883
+2025-04-10 04:24:21 | INFO | Epoch 24 Batch 20: Loss = 0.1957
+2025-04-10 04:27:01 | INFO | Epoch 24 Batch 40: Loss = 0.2024
+2025-04-10 04:29:50 | INFO | Epoch 24 Batch 60: Loss = 0.1813
+2025-04-10 04:32:25 | INFO | Epoch 24 Batch 80: Loss = 0.2112
+2025-04-10 04:36:08 | INFO | Validation Loss: 0.2022
+2025-04-10 04:36:49 | INFO | Epoch 25 Batch 0: Loss = 0.2013
+2025-04-10 04:39:30 | INFO | Epoch 25 Batch 20: Loss = 0.2200
+2025-04-10 04:42:09 | INFO | Epoch 25 Batch 40: Loss = 0.1950
+2025-04-10 04:44:44 | INFO | Epoch 25 Batch 60: Loss = 0.1908
+2025-04-10 04:47:16 | INFO | Epoch 25 Batch 80: Loss = 0.2060
+2025-04-10 04:50:59 | INFO | Validation Loss: 0.1974
+2025-04-10 04:51:00 | INFO | Model saved at epoch 25 with val loss 0.1974
+2025-04-10 04:51:45 | INFO | Epoch 26 Batch 0: Loss = 0.2093
+2025-04-10 04:54:31 | INFO | Epoch 26 Batch 20: Loss = 0.2052
+2025-04-10 04:56:59 | INFO | Epoch 26 Batch 40: Loss = 0.2015
+2025-04-10 04:59:40 | INFO | Epoch 26 Batch 60: Loss = 0.2011
+2025-04-10 05:02:14 | INFO | Epoch 26 Batch 80: Loss = 0.1982
+2025-04-10 05:05:50 | INFO | Validation Loss: 0.1995
+2025-04-10 05:06:34 | INFO | Epoch 27 Batch 0: Loss = 0.2309
+2025-04-10 05:09:23 | INFO | Epoch 27 Batch 20: Loss = 0.1730
+2025-04-10 05:11:55 | INFO | Epoch 27 Batch 40: Loss = 0.1965
+2025-04-10 05:14:16 | INFO | Epoch 27 Batch 60: Loss = 0.2100
+2025-04-10 05:16:45 | INFO | Epoch 27 Batch 80: Loss = 0.2286
+2025-04-10 05:20:54 | INFO | Validation Loss: 0.1935
+2025-04-10 05:20:54 | INFO | Model saved at epoch 27 with val loss 0.1935
+2025-04-10 05:21:27 | INFO | Epoch 28 Batch 0: Loss = 0.2047
+2025-04-10 05:23:54 | INFO | Epoch 28 Batch 20: Loss = 0.1962
+2025-04-10 05:26:39 | INFO | Epoch 28 Batch 40: Loss = 0.1814
+2025-04-10 05:29:29 | INFO | Epoch 28 Batch 60: Loss = 0.1826
+2025-04-10 05:32:10 | INFO | Epoch 28 Batch 80: Loss = 0.1917
+2025-04-10 05:36:01 | INFO | Validation Loss: 0.1957
+2025-04-10 05:36:28 | INFO | Epoch 29 Batch 0: Loss = 0.1829
+2025-04-10 05:39:10 | INFO | Epoch 29 Batch 20: Loss = 0.1932
+2025-04-10 05:42:02 | INFO | Epoch 29 Batch 40: Loss = 0.1994
+2025-04-10 05:44:44 | INFO | Epoch 29 Batch 60: Loss = 0.1820
+2025-04-10 05:47:25 | INFO | Epoch 29 Batch 80: Loss = 0.1986
+2025-04-10 05:51:00 | INFO | Validation Loss: 0.1893
+2025-04-10 05:51:00 | INFO | Model saved at epoch 29 with val loss 0.1893

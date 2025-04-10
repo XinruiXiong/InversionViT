@@ -1,0 +1,14 @@
+2025-04-10 08:40:22 | INFO | Namespace(device='cuda', dataset='flatvel-a', file_size=None, anno_path='split_files', val_anno='./split_files/flatvel_a_test_vit.txt', output_path='vit_test_output/fcn_l1loss_ffb/', save_name='fcn_l1loss_ffb', suffix=None, model='InversionViT', norm='bn', up_mode=None, sample_spatial=1.0, sample_temporal=1, batch_size=16, workers=16, k=1.0, resume='./vit_output/best_model.pth', vis=True, vis_suffix='vit_test', vis_batch=2, vis_sample=2, missing=0, std=0)
+2025-04-10 08:40:22 | INFO | torch version: 2.5.1+cu121, torchvision version: 0.20.1+cu121
+2025-04-10 08:40:22 | INFO | Loading validation data
+2025-04-10 08:43:16 | INFO | Creating data loaders
+2025-04-10 08:43:16 | INFO | Creating model
+2025-04-10 08:43:17 | INFO | ./vit_output/best_model.pth
+2025-04-10 08:43:17 | INFO | Loaded model checkpoint.
+2025-04-10 08:43:17 | INFO | Start testing
+2025-04-10 08:44:46 | INFO | MAE: 0.1971859335899353
+2025-04-10 08:44:46 | INFO | MSE: 0.07144352793693542
+2025-04-10 08:44:52 | INFO | SSIM: 0.45976847410202026
+2025-04-10 08:44:52 | INFO |  * Velocity MAE: 295.7784729003906
+2025-04-10 08:44:52 | INFO |  * Velocity MSE: 160748.3125
+2025-04-10 08:44:52 | INFO | Testing time 0:01:35

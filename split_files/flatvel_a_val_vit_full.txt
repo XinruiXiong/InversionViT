@@ -1,0 +1,12 @@
+./data/data/data49.npy	./data/model/model49.npy
+./data/data/data50.npy	./data/model/model50.npy
+./data/data/data51.npy	./data/model/model51.npy
+./data/data/data52.npy	./data/model/model52.npy
+./data/data/data53.npy	./data/model/model53.npy
+./data/data/data54.npy	./data/model/model54.npy
+./data/data/data55.npy	./data/model/model55.npy
+./data/data/data56.npy	./data/model/model56.npy
+./data/data/data57.npy	./data/model/model57.npy
+./data/data/data58.npy	./data/model/model58.npy
+./data/data/data59.npy	./data/model/model59.npy
+./data/data/data60.npy	./data/model/model60.npy

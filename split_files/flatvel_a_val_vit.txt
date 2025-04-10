@@ -1,0 +1,6 @@
+./data/data/data25.npy	./data/model/model25.npy
+./data/data/data26.npy	./data/model/model26.npy
+./data/data/data27.npy	./data/model/model27.npy
+./data/data/data28.npy	./data/model/model28.npy
+./data/data/data29.npy	./data/model/model29.npy
+./data/data/data30.npy	./data/model/model30.npy
