@@ -1,9 +1,7 @@
-# subset flatvelA (10对):
-# torchrun --nproc_per_node=8 vit_train_ddp.py -ds flatvel-a -t flatvel_a_train_vit.txt -v flatvel_a_val_vit.txt --tensorboard --batch-size 32
-# 完整flatvelA: 
+# full flatvelA: 
 # torchrun --nproc_per_node=8 vit_train_ddp.py -ds flatvel-a -t flatvel_a_train_vit_full.txt -v flatvel_a_val_vit_full.txt --tensorboard --batch-size 32 --epochs 50
+# 8 stupid GTX 1080, or 1 A100
 
-# 用8卡是因为卡太小了，如果A100，应该单卡就行
 import os
 import sys
 import time

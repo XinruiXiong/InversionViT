@@ -1,13 +1,18 @@
-# python vit_train.py -ds flatvel-a -t flatvel_a_train_vit.txt -v flatvel_a_val_vit.txt --tensorboard
-
-
-
+# python vit_train.py \
+#   --dataset flatvel-a \
+#   --train-anno flatvel_a_train_vit_full.txt \
+#   --val-anno flatvel_a_val_vit_full.txt \
+#   --anno-path split_files \
+#   --output-path vit_output \
+#   --batch-size 16 \
 
 import os
 import sys
 import time
 import datetime
 import json
+import logging
+
 import torch
 import torchvision
 from torch import nn
@@ -21,7 +26,23 @@ from network import InversionViT
 from scheduler import WarmupMultiStepLR
 import transforms as T
 
-def train_one_epoch(model, criterion, optimizer, scheduler, dataloader, device, epoch, writer):
+def setup_logger(save_dir):
+    log_file = os.path.join(save_dir, 'train.log')
+    logging.basicConfig(
+        filename=log_file,
+        filemode='a',
+        format='%(asctime)s | %(levelname)s | %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S',
+        level=logging.INFO
+    )
+    console = logging.StreamHandler(sys.stdout)
+    console.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s | %(levelname)s | %(message)s')
+    console.setFormatter(formatter)
+    logging.getLogger('').addHandler(console)
+    return logging
+
+def train_one_epoch(model, criterion, optimizer, scheduler, dataloader, device, epoch, writer, logger):
     model.train()
     step = epoch * len(dataloader)
     for batch_idx, (data, label) in enumerate(dataloader):
@@ -40,9 +61,9 @@ def train_one_epoch(model, criterion, optimizer, scheduler, dataloader, device, 
         step += 1
 
         if batch_idx % 20 == 0:
-            print(f"Epoch {epoch} Batch {batch_idx}: Loss = {loss.item():.4f}")
+            logger.info(f"Epoch {epoch} Batch {batch_idx}: Loss = {loss.item():.4f}")
 
-def evaluate(model, criterion, dataloader, device, writer, step):
+def evaluate(model, criterion, dataloader, device, writer, step, logger):
     model.eval()
     total_loss = 0
     with torch.no_grad():
@@ -55,12 +76,14 @@ def evaluate(model, criterion, dataloader, device, writer, step):
     avg_loss = total_loss / len(dataloader)
     if writer:
         writer.add_scalar('val_loss', avg_loss, step)
-    print(f"Validation Loss: {avg_loss:.4f}")
+    logger.info(f"Validation Loss: {avg_loss:.4f}")
     return avg_loss
 
 def main(args):
-    print("Starting training with InversionViT")
     utils.mkdir(args.output_path)
+    logger = setup_logger(args.output_path)
+    logger.info("Starting single-GPU training with InversionViT")
+
     device = torch.device(args.device)
 
     with open('dataset_config.json') as f:
@@ -98,13 +121,13 @@ def main(args):
 
     best_loss = float('inf')
     for epoch in range(args.epochs):
-        train_one_epoch(model, criterion, optimizer, scheduler, dataloader_train, device, epoch, writer)
-        val_loss = evaluate(model, criterion, dataloader_val, device, writer, step=epoch)
+        train_one_epoch(model, criterion, optimizer, scheduler, dataloader_train, device, epoch, writer, logger)
+        val_loss = evaluate(model, criterion, dataloader_val, device, writer, step=epoch, logger=logger)
 
         if val_loss < best_loss:
             best_loss = val_loss
             torch.save(model.state_dict(), os.path.join(args.output_path, 'best_model.pth'))
-            print(f"Model saved at epoch {epoch} with val loss {val_loss:.4f}")
+            logger.info(f"Model saved at epoch {epoch} with val loss {val_loss:.4f}")
 
 def parse_args():
     import argparse
