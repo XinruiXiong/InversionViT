@@ -1,4 +1,4 @@
-# InversionViT A Vision Transformer implemention of InversionNet
+# InversionViT: A Vision Transformer implemention of InversionNet
 
 ## Data
 https://openfwi-lanl.github.io/docs/data.html#vel
