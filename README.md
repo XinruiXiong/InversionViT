@@ -1,6 +1,6 @@
 # InversionViT A Vision Transformer implemention of InversionNet
 
-## usage
+## Usage
 ### Train (a subset of FlatVel-A)
 ```bash
 bash ./vit_train.sh
