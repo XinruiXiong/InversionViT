@@ -107,10 +107,22 @@ def main(args):
         T.MinMaxNormalize(ctx['label_min'], ctx['label_max'])
     ])
 
-    dataset_train = FWIDataset(os.path.join(args.anno_path, args.train_anno), preload=False, 
-                               file_size=ctx['file_size'], transform_data=transform_data, transform_label=transform_label)
-    dataset_val = FWIDataset(os.path.join(args.anno_path, args.val_anno), preload=False, 
-                             file_size=ctx['file_size'], transform_data=transform_data, transform_label=transform_label)
+    dataset_train = FWIDataset(
+        os.path.join(args.anno_path, args.train_anno),
+        sample_ratio=1,
+        file_size=ctx['file_size'],
+        transform_data=transform_data,
+        transform_label=transform_label
+    )
+
+    dataset_val = FWIDataset(
+        os.path.join(args.anno_path, args.val_anno),
+        sample_ratio=1,
+        file_size=ctx['file_size'],
+        transform_data=transform_data,
+        transform_label=transform_label
+    )
+    # logger and logger.info(f"#Train samples: {len(dataset_train)}, #Val samples: {len(dataset_val)}")
 
     train_sampler = DistributedSampler(dataset_train)
     val_sampler = DistributedSampler(dataset_val, shuffle=False)

@@ -347,48 +347,213 @@ class TransformerEncoderBlock(nn.Module):
         x = x + self.mlp(self.norm2(x))
         return x
 
+# class InversionViT(nn.Module):
+#     def __init__(self, in_channels=5, embed_dim=256, patch_size=(10, 10), depth=6, num_heads=8, sample_spatial=1.0, **kwargs):
+#         super().__init__()
+#         self.patch_embed = PatchEmbedding(in_channels, embed_dim, patch_size)
+#         self.pos_embed = None
+#         self.transformer = nn.Sequential(
+#             *[TransformerEncoderBlock(embed_dim, num_heads) for _ in range(depth)]
+#         )
+
+#         # Decoder: upsample and predict 70x70
+#         self.decoder_conv = nn.Sequential(
+#             nn.ConvTranspose2d(embed_dim, 128, kernel_size=4, stride=2, padding=1),  # 100x7 -> 200x14
+#             nn.BatchNorm2d(128), nn.ReLU(),
+
+#             nn.ConvTranspose2d(128, 64, kernel_size=4, stride=2, padding=1),  # 200x14 -> 400x28
+#             nn.BatchNorm2d(64), nn.ReLU(),
+
+#             nn.ConvTranspose2d(64, 32, kernel_size=4, stride=2, padding=1),  # 400x28 -> 800x56
+#             nn.BatchNorm2d(32), nn.ReLU(),
+
+#             nn.Conv2d(32, 1, kernel_size=3, padding=1),  # → 800x56
+#             nn.Upsample(size=(70, 70), mode='bilinear', align_corners=False),  # 强制调成最终尺寸
+#             nn.Tanh()
+#         )
+
+#     def forward(self, x):
+#         x, (H, W) = self.patch_embed(x)  # -> [B, N, D], (H=100, W=7)
+#         if self.pos_embed is None:
+#             N = x.shape[1]
+#             self.pos_embed = nn.Parameter(torch.zeros(1, N, x.shape[2], device=x.device))
+#             nn.init.trunc_normal_(self.pos_embed, std=0.02)
+
+#         x = x + self.pos_embed
+#         x = self.transformer(x)  # [B, N, D]
+#         x = x.transpose(1, 2).reshape(-1, x.shape[-1], H, W)  # -> [B, D, H', W']
+#         x = self.decoder_conv(x)  # -> [B, 1, 70, 70]
+#         return x
 class InversionViT(nn.Module):
     def __init__(self, in_channels=5, embed_dim=256, patch_size=(10, 10), depth=6, num_heads=8, sample_spatial=1.0, **kwargs):
         super().__init__()
         self.patch_embed = PatchEmbedding(in_channels, embed_dim, patch_size)
-        self.pos_embed = None
+
+        # <<< 新增 >>> 初始化时直接计算 patch 数量
+        num_patches = (1000 // patch_size[0]) * (70 // patch_size[1])  # H // p1 * W // p2
+        self.pos_embed = nn.Parameter(torch.zeros(1, num_patches, embed_dim))  # <<< moved here
+        nn.init.trunc_normal_(self.pos_embed, std=0.02)
+
         self.transformer = nn.Sequential(
             *[TransformerEncoderBlock(embed_dim, num_heads) for _ in range(depth)]
         )
 
-        # Decoder: upsample and predict 70x70
         self.decoder_conv = nn.Sequential(
-            nn.ConvTranspose2d(embed_dim, 128, kernel_size=4, stride=2, padding=1),  # 100x7 -> 200x14
+            nn.ConvTranspose2d(embed_dim, 128, kernel_size=4, stride=2, padding=1),
             nn.BatchNorm2d(128), nn.ReLU(),
 
-            nn.ConvTranspose2d(128, 64, kernel_size=4, stride=2, padding=1),  # 200x14 -> 400x28
+            nn.ConvTranspose2d(128, 64, kernel_size=4, stride=2, padding=1),
             nn.BatchNorm2d(64), nn.ReLU(),
 
-            nn.ConvTranspose2d(64, 32, kernel_size=4, stride=2, padding=1),  # 400x28 -> 800x56
+            nn.ConvTranspose2d(64, 32, kernel_size=4, stride=2, padding=1),
             nn.BatchNorm2d(32), nn.ReLU(),
 
-            nn.Conv2d(32, 1, kernel_size=3, padding=1),  # → 800x56
-            nn.Upsample(size=(70, 70), mode='bilinear', align_corners=False),  # 强制调成最终尺寸
+            nn.Conv2d(32, 1, kernel_size=3, padding=1),
+            nn.Upsample(size=(70, 70), mode='bilinear', align_corners=False),
             nn.Tanh()
         )
 
     def forward(self, x):
-        x, (H, W) = self.patch_embed(x)  # -> [B, N, D], (H=100, W=7)
-        if self.pos_embed is None:
-            N = x.shape[1]
-            self.pos_embed = nn.Parameter(torch.zeros(1, N, x.shape[2], device=x.device))
-            nn.init.trunc_normal_(self.pos_embed, std=0.02)
-
-        x = x + self.pos_embed
-        x = self.transformer(x)  # [B, N, D]
-        x = x.transpose(1, 2).reshape(-1, x.shape[-1], H, W)  # -> [B, D, H', W']
-        x = self.decoder_conv(x)  # -> [B, 1, 70, 70]
+        x, (H, W) = self.patch_embed(x)
+        x = x + self.pos_embed  # <<< 直接使用已有 pos_embed，不再创建
+        x = self.transformer(x)
+        x = x.transpose(1, 2).reshape(-1, x.shape[-1], H, W)
+        x = self.decoder_conv(x)
         return x
 
+# ----------------------------------------------
+#             Ultimate InversionViT (UViT)
+# ----------------------------------------------
+
+
+class ConvBlock(nn.Module):
+    def __init__(self, in_ch, out_ch, kernel_size=3, stride=1, padding=1):
+        super().__init__()
+        self.conv = nn.Sequential(
+            nn.Conv2d(in_ch, out_ch, kernel_size, stride, padding),
+            nn.BatchNorm2d(out_ch),
+            nn.ReLU(inplace=True)
+        )
+
+    def forward(self, x):
+        return self.conv(x)
+
+class UpBlock(nn.Module):
+    def __init__(self, in_ch, out_ch, skip_ch=0):
+        super().__init__()
+        self.up = nn.ConvTranspose2d(in_ch, out_ch, kernel_size=4, stride=2, padding=1)
+        self.conv = nn.Sequential(
+            nn.BatchNorm2d(out_ch + skip_ch),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(out_ch + skip_ch, out_ch, kernel_size=3, padding=1),
+            nn.BatchNorm2d(out_ch),
+            nn.ReLU(inplace=True)
+        )
+
+    def forward(self, x, skip=None):
+        x = self.up(x)
+        if skip is not None:
+            # 对 skip 特征图下采样以匹配 x 的空间尺寸
+            skip = F.adaptive_avg_pool2d(skip, output_size=x.shape[-2:])
+            x = torch.cat([x, skip], dim=1)
+        return self.conv(x)
+
+class PatchEmbedding(nn.Module):
+    def __init__(self, in_channels=256, embed_dim=256, patch_size=(10, 10)):
+        super().__init__()
+        self.proj = nn.Conv2d(in_channels, embed_dim, kernel_size=patch_size, stride=patch_size)
+
+    def forward(self, x):
+        x = self.proj(x)  # B, D, H, W
+        H, W = x.shape[2], x.shape[3]
+        x = x.flatten(2).transpose(1, 2)  # B, N, D
+        return x, (H, W)
+
+class TransformerEncoderBlock(nn.Module):
+    def __init__(self, embed_dim=256, num_heads=8, mlp_ratio=4.0, dropout=0.1):
+        super().__init__()
+        self.norm1 = nn.LayerNorm(embed_dim)
+        self.attn = nn.MultiheadAttention(embed_dim, num_heads, dropout=dropout, batch_first=True)
+        self.norm2 = nn.LayerNorm(embed_dim)
+        self.mlp = nn.Sequential(
+            nn.Linear(embed_dim, int(embed_dim * mlp_ratio)),
+            nn.GELU(),
+            nn.Linear(int(embed_dim * mlp_ratio), embed_dim),
+        )
+
+    def forward(self, x):
+        x = x + self.attn(self.norm1(x), self.norm1(x), self.norm1(x))[0]
+        x = x + self.mlp(self.norm2(x))
+        return x
+
+class UViT(nn.Module):
+    def __init__(self, in_channels=5, embed_dim=256, patch_size=(10, 10), depth=6, num_heads=8):
+        super().__init__()
+        # Encoder
+        self.stem = ConvBlock(in_channels, 64)
+        self.encoder_conv1 = ConvBlock(64, 128, stride=2)
+        self.encoder_conv2 = ConvBlock(128, 256, stride=2)
+
+        # Patch Embedding from deep features
+        self.patch_embed = PatchEmbedding(in_channels=256, embed_dim=embed_dim, patch_size=patch_size)
+        self.pos_embed = nn.Parameter(torch.zeros(1, 12 * 1, embed_dim))  # Assuming input (125, 18) // (10, 10) ≈ (12, 1)
+        nn.init.trunc_normal_(self.pos_embed, std=0.02)
+
+        # Transformer
+        self.transformer = nn.Sequential(
+            *[TransformerEncoderBlock(embed_dim, num_heads) for _ in range(depth)]
+        )
+
+        # Decoder with skip connections
+        self.decoder = nn.ModuleList([
+            UpBlock(embed_dim, 128, skip_ch=256),
+            UpBlock(128, 64, skip_ch=128),
+            UpBlock(64, 32, skip_ch=64)
+        ])
+
+        self.final = nn.Sequential(
+            nn.Conv2d(32, 1, kernel_size=3, padding=1),
+            nn.Upsample(size=(70, 70), mode='bilinear', align_corners=False),
+            nn.Tanh()
+        )
+
+    def forward(self, x):
+        # Encoder
+        skip0 = self.stem(x)               # [B, 64, 500, 70]
+        skip1 = self.encoder_conv1(skip0)  # [B, 128, 250, 35]
+        skip2 = self.encoder_conv2(skip1)  # [B, 256, 125, 18]
+
+        # Transformer
+        x, (H, W) = self.patch_embed(skip2)  # [B, N, D], e.g. N=25
+        if self.pos_embed.shape[1] != x.shape[1]:
+            # 动态插值位置编码（确保与 x 匹配）
+            pos_embed = nn.functional.interpolate(
+                self.pos_embed.permute(0, 2, 1),  # [1, D, N]
+                size=x.shape[1],                 # target N
+                mode='linear',
+                align_corners=False
+            ).permute(0, 2, 1)  # [1, N, D]
+        else:
+            pos_embed = self.pos_embed
+
+        x = x + pos_embed
+
+        x = self.transformer(x)                   # [B, N, D]
+        x = x.transpose(1, 2).reshape(-1, x.shape[-1], H, W)  # [B, D, H, W]
+
+        # Decoder with 3 skip levels
+        x = self.decoder[0](x, skip2)
+        x = self.decoder[1](x, skip1)
+        x = self.decoder[2](x, skip0)
+
+        # Output
+        x = self.final(x)
+        return x
 
 model_dict = {
     'InversionNet': InversionNet,
     'Discriminator': Discriminator,
     'UPFWI': FCN4_Deep_Resize_2,
-    'InversionViT': InversionViT
+    'InversionViT': InversionViT,
+    'UViT': UViT
 }

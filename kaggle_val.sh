@@ -1,0 +1,13 @@
+python test.py \
+  --model InversionNet \
+  --dataset kagglemix \
+  --anno-path split_files \
+  --val-anno file_pairs_val.txt \
+  --resume checkpoint.pth \
+  --device cuda \
+  --batch-size 8 \
+  --workers 2 \
+  --vis \
+  --vis-batch 2 \
+  --vis-sample 1 \
+  --save-name fcn_l1loss

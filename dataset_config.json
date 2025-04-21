@@ -185,5 +185,22 @@
         "ng": 70,
         "sz": 10,
         "gz": 10
-    }
+    },
+    "kagglemix": {
+        "data_min": -29.04,
+        "data_max": 57.03,
+        "label_min": 1500,
+        "label_max": 4500,
+        "file_size": 500,
+        "nbc": 120,
+        "dx": 10,
+        "nt": 1000,
+        "dt": 0.001,
+        "f": 15,
+        "n_grid": 70,
+        "ns": 5,
+        "ng": 70,
+        "sz": 10,
+        "gz": 10
+      }
 }

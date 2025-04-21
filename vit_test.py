@@ -158,7 +158,6 @@ def main(args):
     if args.resume:
         logger.info(args.resume)
         checkpoint = torch.load(args.resume, map_location='cpu')
-        checkpoint.pop('pos_embed', None)  
         model.load_state_dict(checkpoint)
         logger.info('Loaded model checkpoint.')
 
