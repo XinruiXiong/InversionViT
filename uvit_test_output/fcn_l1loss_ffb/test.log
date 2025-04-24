@@ -1,0 +1,25 @@
+2025-04-23 13:54:50 | INFO | Namespace(device='cuda', dataset='flatvel-a', file_size=None, anno_path='split_files', val_anno='./split_files/flatvel_a_test_vit.txt', output_path='uvit_test_output/fcn_l1loss_ffb/', save_name='fcn_l1loss_ffb', suffix=None, model='UViT', norm='bn', up_mode=None, sample_spatial=1.0, sample_temporal=1, batch_size=8, workers=16, k=1.0, resume='./UViT_models/uvit_final/checkpoint.pth', vis=True, vis_suffix='uvit_test', vis_batch=2, vis_sample=2, missing=0, std=0)
+2025-04-23 13:54:50 | INFO | torch version: 2.5.1+cu121, torchvision version: 0.20.1+cu121
+2025-04-23 13:54:50 | INFO | Loading validation data
+2025-04-23 13:54:50 | INFO | Creating data loaders
+2025-04-23 13:54:50 | INFO | Creating model
+2025-04-23 13:57:11 | INFO | Namespace(device='cuda', dataset='flatvel-a', file_size=None, anno_path='split_files', val_anno='./split_files/flatvel_a_test_vit.txt', output_path='uvit_test_output/fcn_l1loss_ffb/', save_name='fcn_l1loss_ffb', suffix=None, model='UViT', norm='bn', up_mode=None, sample_spatial=1.0, sample_temporal=1, batch_size=8, workers=16, k=1.0, resume='./UViT_models/uvit_final/checkpoint.pth', vis=True, vis_suffix='uvit_test', vis_batch=2, vis_sample=2, missing=0, std=0)
+2025-04-23 13:57:11 | INFO | torch version: 2.5.1+cu121, torchvision version: 0.20.1+cu121
+2025-04-23 13:57:11 | INFO | Loading validation data
+2025-04-23 13:57:11 | INFO | Creating data loaders
+2025-04-23 13:57:11 | INFO | Creating model
+2025-04-23 13:57:13 | INFO | ./UViT_models/uvit_final/checkpoint.pth
+2025-04-23 13:58:33 | INFO | Namespace(device='cuda', dataset='flatvel-a', file_size=None, anno_path='split_files', val_anno='./split_files/flatvel_a_test_vit.txt', output_path='uvit_test_output/fcn_l1loss_ffb/', save_name='fcn_l1loss_ffb', suffix=None, model='UViT', norm='bn', up_mode=None, sample_spatial=1.0, sample_temporal=1, batch_size=8, workers=16, k=1.0, resume='./UViT_models/uvit_final/checkpoint.pth', vis=True, vis_suffix='uvit_test', vis_batch=2, vis_sample=2, missing=0, std=0)
+2025-04-23 13:58:33 | INFO | torch version: 2.5.1+cu121, torchvision version: 0.20.1+cu121
+2025-04-23 13:58:33 | INFO | Loading validation data
+2025-04-23 13:58:33 | INFO | Creating data loaders
+2025-04-23 13:58:33 | INFO | Creating model
+2025-04-23 13:58:34 | INFO | ./UViT_models/uvit_final/checkpoint.pth
+2025-04-23 13:58:34 | INFO | Loaded model checkpoint.
+2025-04-23 13:58:34 | INFO | Start testing
+2025-04-23 14:02:01 | INFO | MAE: 0.06711313128471375
+2025-04-23 14:02:01 | INFO | MSE: 0.010973350144922733
+2025-04-23 14:02:08 | INFO | SSIM: 0.9044177532196045
+2025-04-23 14:02:08 | INFO |  * Velocity MAE: 100.6698226928711
+2025-04-23 14:02:08 | INFO |  * Velocity MSE: 24690.064453125
+2025-04-23 14:02:08 | INFO | Testing time 0:03:34

@@ -147,9 +147,17 @@ def main(args):
         logger.error('Unsupported model.')
         sys.exit()
 
-    model = network.model_dict[args.model](upsample_mode=args.up_mode,
-        sample_spatial=args.sample_spatial, sample_temporal=args.sample_temporal, norm=args.norm).to(device)
-
+    # 修改后：
+    if args.model == "UViT":
+        model = network.model_dict["UViT"]().to(device)
+    else:
+        model = network.model_dict[args.model](
+            upsample_mode=args.up_mode,
+            sample_spatial=args.sample_spatial,
+            sample_temporal=args.sample_temporal,
+            norm=args.norm
+        ).to(device)
+    
     criterions = {
         'MAE': lambda x, y: np.mean(np.abs(x - y)),
         'MSE': lambda x, y: np.mean((x - y) ** 2)
@@ -158,7 +166,10 @@ def main(args):
     if args.resume:
         logger.info(args.resume)
         checkpoint = torch.load(args.resume, map_location='cpu')
-        model.load_state_dict(checkpoint)
+        if "model" in checkpoint:
+            model.load_state_dict(checkpoint["model"])  # ✅ 只加载权重
+        else:
+            model.load_state_dict(checkpoint)  # 兼容只包含权重的 .pth 文件
         logger.info('Loaded model checkpoint.')
 
     vis_path = None
